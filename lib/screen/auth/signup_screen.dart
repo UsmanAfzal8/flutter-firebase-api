@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_backend/screen/auth/signup_screen.dart';
+import 'package:flutter_backend/screen/auth/login_screen.dart';
 import 'package:flutter_backend/widget/custom/custom_elevated_button.dart';
 import 'package:flutter_backend/widget/custom/custom_text.dart';
 import 'package:flutter_backend/widget/custom/custom_textform_field.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
-  static String route = '/loginscreen';
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({super.key});
+  static String routes = 'signupscreen';
   @override
   Widget build(BuildContext context) {
     TextEditingController email = TextEditingController();
+    TextEditingController name = TextEditingController();
     TextEditingController password = TextEditingController();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Text('Signup'),
       ),
       body: Center(
           child: Padding(
@@ -21,6 +22,11 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            CustomTextFormField(
+              hint: 'name',
+              controller: name,
+            ),
+            const SizedBox(height: 20),
             CustomTextFormField(
               hint: 'email',
               controller: email,
@@ -33,11 +39,11 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 30),
             SizedBox(
                 width: 130,
-                child: CustomElevatedButton(title: 'Login', onTap: () {})),
+                child: CustomElevatedButton(title: 'Signup', onTap: () {})),
             const SizedBox(height: 10),
             TextButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(SignupScreen.routes);
+                  Navigator.of(context).pushNamed(LoginScreen.route);
                 },
                 child: const ForText(
                   name: 'Already have account',
